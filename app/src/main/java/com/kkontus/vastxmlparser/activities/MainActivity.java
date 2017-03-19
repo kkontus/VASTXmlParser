@@ -1,5 +1,6 @@
 package com.kkontus.vastxmlparser.activities;
 
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -11,6 +12,11 @@ import com.stanfy.gsonxml.XmlParserCreator;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,8 +41,11 @@ public class MainActivity extends AppCompatActivity {
                 .setXmlParserCreator(parserCreator)
                 .create();
 
+        String xml = loadXmlFromFile();
+        //String xml = loadXmlFromCode();
+        System.out.println("Loaded XML file:");
+        System.out.println(xml);
 
-        String xml = vastXML();
         VAST vastModel = gsonXml.fromXml(xml, VAST.class);
 
         System.out.println(vastModel.getVersion());
@@ -66,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         System.out.println(vastModel.getAd().getInLine().getCreatives().getCreative().getLinear().getMediaFiles().getMediaFile().getValue());
     }
 
-    public String vastXML() {
+    public String loadXmlFromCode() {
         String xml = "<VAST version=\"3.0\">\n" +
                 "  <Ad id=\"1413833\">\n" +
                 "    <InLine>\n" +
@@ -95,4 +104,41 @@ public class MainActivity extends AppCompatActivity {
 
         return xml;
     }
+
+    private String loadXmlFromFile() {
+        String xml = null;
+        AssetManager assetManager = getAssets();
+        try {
+            InputStream is = assetManager.open("vast.xml");
+            xml = getStringFromInputStream(is);
+            is.close();
+        } catch (Exception e) {
+            e.printStackTrace();  // TODO: Customise this generated block
+        }
+        return xml;
+    }
+
+    private String getStringFromInputStream(InputStream is) {
+        BufferedReader br = null;
+        StringBuilder sb = new StringBuilder();
+        String line;
+        try {
+            br = new BufferedReader(new InputStreamReader(is));
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return sb.toString();
+    }
+
 }
