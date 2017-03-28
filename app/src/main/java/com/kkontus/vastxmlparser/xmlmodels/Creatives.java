@@ -1,13 +1,18 @@
 package com.kkontus.vastxmlparser.xmlmodels;
 
-public class Creatives {
-    private Creative Creative;
+import com.google.gson.annotations.SerializedName;
 
-    public com.kkontus.vastxmlparser.xmlmodels.Creative getCreative() {
+import java.util.List;
+
+public class Creatives {
+    @SerializedName("Creative")
+    private List<Creative> Creative;
+
+    public List<Creative> getCreative() {
         return Creative;
     }
 
-    public void setCreative(com.kkontus.vastxmlparser.xmlmodels.Creative creative) {
+    public void setCreative(List<Creative> creative) {
         Creative = creative;
     }
 }

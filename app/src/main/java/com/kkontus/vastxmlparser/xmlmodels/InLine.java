@@ -1,10 +1,21 @@
 package com.kkontus.vastxmlparser.xmlmodels;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
 public class InLine {
     private String AdSystem;
     private String AdTitle;
     private String Error;
     private Creatives Creatives;
+    private String Description;
+    private String Advertiser;
+    private String Pricing;
+    private String Survey;
+    @SerializedName("Impression")
+    private List<String> Impression;
+    private Extensions Extensions;
 
     public String getAdSystem() {
         return AdSystem;
@@ -30,11 +41,59 @@ public class InLine {
         Error = error;
     }
 
-    public com.kkontus.vastxmlparser.xmlmodels.Creatives getCreatives() {
+    public Creatives getCreatives() {
         return Creatives;
     }
 
-    public void setCreatives(com.kkontus.vastxmlparser.xmlmodels.Creatives creatives) {
+    public void setCreatives(Creatives creatives) {
         Creatives = creatives;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    public String getAdvertiser() {
+        return Advertiser;
+    }
+
+    public void setAdvertiser(String advertiser) {
+        Advertiser = advertiser;
+    }
+
+    public String getPricing() {
+        return Pricing;
+    }
+
+    public void setPricing(String pricing) {
+        Pricing = pricing;
+    }
+
+    public String getSurvey() {
+        return Survey;
+    }
+
+    public void setSurvey(String survey) {
+        Survey = survey;
+    }
+
+    public List<String> getImpression() {
+        return Impression;
+    }
+
+    public void setImpression(List<String> impression) {
+        Impression = impression;
+    }
+
+    public Extensions getExtensions() {
+        return Extensions;
+    }
+
+    public void setExtensions(Extensions extensions) {
+        Extensions = extensions;
     }
 }

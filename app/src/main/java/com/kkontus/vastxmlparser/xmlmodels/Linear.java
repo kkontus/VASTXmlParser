@@ -9,6 +9,33 @@ public class Linear {
     private TrackingEvents TrackingEvents;
     private VideoClicks VideoClicks;
     private MediaFiles MediaFiles;
+    private String AdParameters;
+    private CreativeExtensions CreativeExtensions;
+    private Icons Icons;
+
+    public Icons getIcons() {
+        return Icons;
+    }
+
+    public void setIcons(Icons icons) {
+        Icons = icons;
+    }
+
+    public CreativeExtensions getCreativeExtensions() {
+        return CreativeExtensions;
+    }
+
+    public void setCreativeExtensions(CreativeExtensions creativeExtensions) {
+        CreativeExtensions = creativeExtensions;
+    }
+
+    public String getAdParameters() {
+        return AdParameters;
+    }
+
+    public void setAdParameters(String adParameters) {
+        AdParameters = adParameters;
+    }
 
     public String getSkipoffset() {
         return skipoffset;
@@ -26,27 +53,27 @@ public class Linear {
         Duration = duration;
     }
 
-    public com.kkontus.vastxmlparser.xmlmodels.TrackingEvents getTrackingEvents() {
+    public TrackingEvents getTrackingEvents() {
         return TrackingEvents;
     }
 
-    public void setTrackingEvents(com.kkontus.vastxmlparser.xmlmodels.TrackingEvents trackingEvents) {
+    public void setTrackingEvents(TrackingEvents trackingEvents) {
         TrackingEvents = trackingEvents;
     }
 
-    public com.kkontus.vastxmlparser.xmlmodels.VideoClicks getVideoClicks() {
+    public VideoClicks getVideoClicks() {
         return VideoClicks;
     }
 
-    public void setVideoClicks(com.kkontus.vastxmlparser.xmlmodels.VideoClicks videoClicks) {
+    public void setVideoClicks(VideoClicks videoClicks) {
         VideoClicks = videoClicks;
     }
 
-    public com.kkontus.vastxmlparser.xmlmodels.MediaFiles getMediaFiles() {
+    public MediaFiles getMediaFiles() {
         return MediaFiles;
     }
 
-    public void setMediaFiles(com.kkontus.vastxmlparser.xmlmodels.MediaFiles mediaFiles) {
+    public void setMediaFiles(MediaFiles mediaFiles) {
         MediaFiles = mediaFiles;
     }
 }

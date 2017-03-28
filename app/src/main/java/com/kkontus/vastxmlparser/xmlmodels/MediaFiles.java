@@ -1,13 +1,18 @@
 package com.kkontus.vastxmlparser.xmlmodels;
 
-public class MediaFiles {
-    private MediaFile MediaFile;
+import com.google.gson.annotations.SerializedName;
 
-    public com.kkontus.vastxmlparser.xmlmodels.MediaFile getMediaFile() {
+import java.util.List;
+
+public class MediaFiles {
+    @SerializedName("MediaFile")
+    private List<MediaFile> MediaFile;
+
+    public List<MediaFile> getMediaFile() {
         return MediaFile;
     }
 
-    public void setMediaFile(com.kkontus.vastxmlparser.xmlmodels.MediaFile mediaFile) {
+    public void setMediaFile(List<MediaFile> mediaFile) {
         MediaFile = mediaFile;
     }
 }

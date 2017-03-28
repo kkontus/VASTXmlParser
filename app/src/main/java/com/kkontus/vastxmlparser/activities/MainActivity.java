@@ -39,17 +39,83 @@ public class MainActivity extends AppCompatActivity {
 
         GsonXml gsonXml = new GsonXmlBuilder()
                 .setXmlParserCreator(parserCreator)
+                .setPrimitiveArrays(true)
+                .setSameNameLists(true)
                 .create();
 
-        String xml = loadXmlFromFile();
+        String xml = loadXmlFromFile("vast.xml");
         //String xml = loadXmlFromCode();
         System.out.println("Loaded XML file:");
-        System.out.println(xml);
+        //System.out.println(xml);
 
         VAST vastModel = gsonXml.fromXml(xml, VAST.class);
 
+        //http://static.vagrant.dev/6a97888ec52c042c679a36e919843cca/videos/359836/1719100027841900_1.mp4
+
         System.out.println(vastModel.getVersion());
-        System.out.println(vastModel.getAd());
+        System.out.println(vastModel.getAd().size());
+        System.out.println(vastModel.getAd().get(0).getId());
+        System.out.println(vastModel.getAd().get(0).getInLine());
+        System.out.println(vastModel.getAd().get(0).getInLine().getAdSystem());
+        System.out.println(vastModel.getAd().get(0).getInLine().getAdTitle());
+        System.out.println(vastModel.getAd().get(0).getInLine().getError());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getSequence());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getId());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getSkipoffset());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getDuration());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getTrackingEvents());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getTrackingEvents().getTracking());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getTrackingEvents().getTracking().get(0).getEvent());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getTrackingEvents().getTracking().get(0).getOffset());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getTrackingEvents().getTracking().get(0).getValue());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getVideoClicks());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getVideoClicks().getClickThrough());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getMediaFiles().getMediaFile());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getMediaFiles().getMediaFile().get(0).getDelivery());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getMediaFiles().getMediaFile().get(0).getType());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getMediaFiles().getMediaFile().get(0).getValue());
+
+        /*
+        System.out.println(vastModel.getVersion());
+        System.out.println(vastModel.getAd().size());
+        System.out.println(vastModel.getAd().get(0).getInLine().getExtensions());
+        System.out.println(vastModel.getAd().get(0).getInLine().getExtensions().getExtension().get(0).getValue());
+        System.out.println(vastModel.getAd().get(0).getInLine().getExtensions().getExtension().get(1).getValue());
+        System.out.println(vastModel.getAd().get(0).getInLine().getExtensions().getExtension().get(2).getValue());
+        System.out.println(vastModel.getAd().get(1).getInLine().getExtensions().getExtension().get(0).getValue());
+        System.out.println(vastModel.getAd().get(1).getInLine().getExtensions().getExtension().get(1).getValue());
+        System.out.println(vastModel.getAd().get(1).getInLine().getExtensions().getExtension().get(2).getValue());
+        System.out.println(vastModel.getAd().get(0).getInLine().getImpression().get(0));
+        System.out.println(vastModel.getAd().get(0).getInLine().getImpression().get(1));
+        System.out.println(vastModel.getAd().get(0).getInLine().getImpression().get(2));
+        System.out.println(vastModel.getAd().get(1).getInLine().getImpression().get(0));
+        System.out.println(vastModel.getAd().get(1).getInLine().getImpression().get(1));
+        System.out.println(vastModel.getAd().get(1).getInLine().getImpression().get(2));
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getId());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getSequence());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getDuration());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getAdParameters());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getTrackingEvents().getTracking().get(0).getValue());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getTrackingEvents().getTracking().get(1).getValue());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getMediaFiles().getMediaFile().get(0).getValue());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getMediaFiles().getMediaFile().get(1).getValue());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getCreativeExtensions().getCreativeExtension().get(0).getValue());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getCreativeExtensions().getCreativeExtension().get(1).getValue());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getVideoClicks().getClickThrough());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getVideoClicks().getClickTracking().get(0).getValue());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getVideoClicks().getClickTracking().get(1).getValue());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getVideoClicks().getCustomClick().get(0).getValue());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getVideoClicks().getCustomClick().get(0).getValue());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getIcons().getIcon().get(0).getIconViewTracking().get(0));
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getIcons().getIcon().get(0).getIconViewTracking().get(1));
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getIcons().getIcon().get(0).getIconClicks().getIconClickThrough());
+        System.out.println(vastModel.getAd().get(0).getInLine().getCreatives().getCreative().get(0).getLinear().get(0).getIcons().getIcon().get(0).getIconClicks().getIconClickTracking().get(0));
+        */
+
+        /*
         System.out.println(vastModel.getAd().getId());
         System.out.println(vastModel.getAd().getInLine());
         System.out.println(vastModel.getAd().getInLine().getAdSystem());
@@ -73,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
         System.out.println(vastModel.getAd().getInLine().getCreatives().getCreative().getLinear().getMediaFiles().getMediaFile().getDelivery());
         System.out.println(vastModel.getAd().getInLine().getCreatives().getCreative().getLinear().getMediaFiles().getMediaFile().getType());
         System.out.println(vastModel.getAd().getInLine().getCreatives().getCreative().getLinear().getMediaFiles().getMediaFile().getValue());
+        */
     }
 
     public String loadXmlFromCode() {
@@ -105,11 +172,11 @@ public class MainActivity extends AppCompatActivity {
         return xml;
     }
 
-    private String loadXmlFromFile() {
+    private String loadXmlFromFile(String filename) {
         String xml = null;
         AssetManager assetManager = getAssets();
         try {
-            InputStream is = assetManager.open("vast.xml");
+            InputStream is = assetManager.open(filename);
             xml = getStringFromInputStream(is);
             is.close();
         } catch (Exception e) {

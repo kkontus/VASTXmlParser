@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName;
 public class Ad {
     @SerializedName("@id")
     private String id;
+    @SerializedName("@sequence")
+    private String sequence;
     private InLine InLine;
 
     public String getId() {
@@ -15,11 +17,19 @@ public class Ad {
         this.id = id;
     }
 
-    public com.kkontus.vastxmlparser.xmlmodels.InLine getInLine() {
+    public String getSequence() {
+        return sequence;
+    }
+
+    public void setSequence(String sequence) {
+        this.sequence = sequence;
+    }
+
+    public InLine getInLine() {
         return InLine;
     }
 
-    public void setInLine(com.kkontus.vastxmlparser.xmlmodels.InLine inLine) {
+    public void setInLine(InLine inLine) {
         InLine = inLine;
     }
 }

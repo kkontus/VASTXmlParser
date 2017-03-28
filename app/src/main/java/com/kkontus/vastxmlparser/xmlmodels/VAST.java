@@ -2,10 +2,13 @@ package com.kkontus.vastxmlparser.xmlmodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class VAST {
     @SerializedName("@version")
     private String version;
-    private Ad Ad;
+    @SerializedName("Ad")
+    private List<Ad> Ad;
 
     public String getVersion() {
         return version;
@@ -15,11 +18,11 @@ public class VAST {
         this.version = version;
     }
 
-    public com.kkontus.vastxmlparser.xmlmodels.Ad getAd() {
+    public List<Ad> getAd() {
         return Ad;
     }
 
-    public void setAd(com.kkontus.vastxmlparser.xmlmodels.Ad ad) {
+    public void setAd(List<Ad> ad) {
         Ad = ad;
     }
 }

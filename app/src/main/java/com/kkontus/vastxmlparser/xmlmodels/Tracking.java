@@ -10,6 +10,14 @@ public class Tracking {
     @SerializedName("@offset")
     private String offset;
 
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
     public String getEvent() {
         return event;
     }
@@ -24,13 +32,5 @@ public class Tracking {
 
     public void setOffset(String offset) {
         this.offset = offset;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
     }
 }

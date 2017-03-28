@@ -1,13 +1,18 @@
 package com.kkontus.vastxmlparser.xmlmodels;
 
-public class TrackingEvents {
-    private Tracking Tracking;
+import com.google.gson.annotations.SerializedName;
 
-    public com.kkontus.vastxmlparser.xmlmodels.Tracking getTracking() {
+import java.util.List;
+
+public class TrackingEvents {
+    @SerializedName("Tracking")
+    private List<Tracking> Tracking;
+
+    public List<Tracking> getTracking() {
         return Tracking;
     }
 
-    public void setTracking(com.kkontus.vastxmlparser.xmlmodels.Tracking tracking) {
+    public void setTracking(List<Tracking> tracking) {
         Tracking = tracking;
     }
 }
